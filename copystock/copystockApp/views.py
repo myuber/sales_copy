@@ -1,5 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from . import models
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the index.")
+    template_name = "copystockApp/index.html"
+    context = {"articles": models.Article.objects.all()}
+    return render(request, template_name, context)
+
+def new(request):
+    template_name = "copystockApp/new.html"
+    if request.method == "POST":
+        models.Article.objects.create(title=request.POST["title"])
+    return render(request, template_name)
