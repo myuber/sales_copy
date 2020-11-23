@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <h3>Article</h3>
+    <h3>新規作成</h3>
+    <a href="{% url 'new' %}">部屋を新しく作成する</a>
+
+    <h3>作成された部屋一覧</h3>
     {% for article in articles %}
-        <p>{{ article.title }} - {{ article.posted_at }}</p>
+        <p>
+            <a href="{% url 'view_article' article.pk %}">{{ article.title }} - {{ article.posted_at }}</a>
+            <a href="{% url 'edit' article.pk %}">編集</a>
+            <a href="{% url 'delete' article.pk %}">削除</a>
+        </p>
     {% endfor %}
 </body>
 </html>

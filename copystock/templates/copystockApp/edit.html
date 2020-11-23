@@ -10,10 +10,11 @@
     <form action="" method="post">
         {% csrf_token %}
         <p><label for="title_input">タイトル</label></p>
-        <p><input type="text" name="title" id="title_input"></p>
-        <p><button type="submit">投稿</button></p>
+        <p><input type="text" value="{{ article.title }}", name="title" id="title_input"></p>
+        <p><button type="submit">登録</button></p>
 
         <a href="{% url 'index' %}">Top</a>
+        <a href="{% url 'view_article' article.pk %}">編集しない</a>
     </form>
 </body>
 </html>
