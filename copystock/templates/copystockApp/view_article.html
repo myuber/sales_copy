@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{{ article.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h3>{{ article.title }}</h3>
+    <small>投稿日時 : {{ article.posted_at }}</small>
+    <p><a href="{% url 'edit' article.pk %}">編集</a></p>
+
+    <form action="" method="POST">
+        <p><label for="copy">キャッチコピー</label></p>
+        {% csrf_token %}
+        <textarea name="text" id="copy" cols="20", rows="5"></textarea>
+        <button type="submit">投稿</button>
+    </form>
+    {% for copy in article.sales_copy.all %}
+        <p>{{ copy.text }}</br><small>{{ copy.posted_at }}</small></p>
+    {% empty %}
+        <p>まだキャッチコピーの投稿はありません</p>
+    {% endfor %}
+
+    <a href="{% url 'index' %}">Top</a>
+</body>
+</html>
