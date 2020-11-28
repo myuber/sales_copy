@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import Http404
+
 from . import models
+
 
 # トップページ（部屋の一覧）
 def index(request):

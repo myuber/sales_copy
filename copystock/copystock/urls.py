@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path("", include("copystockApp.urls")), # includeでアプリ側のurlと連携させる
     path("admin/", admin.site.urls),
+    path("top", include("copystockApp.urls")), # includeでアプリ側のurlと連携させる
+    path("", include("accounts.urls")),
 ]
