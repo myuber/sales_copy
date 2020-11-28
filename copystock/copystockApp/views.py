@@ -27,6 +27,10 @@ def view_article(request, pk):
     except models.Article.DoesNotExist:
         raise Http404
     
+    if request.method == "POST":
+        # データベースに投稿されたキャッチコピーを保存
+        models.Copy.objects.create(text=request.POST["text"], article=article)
+    
     context = {"article": article}
     return render(request, template_name, context)
 
