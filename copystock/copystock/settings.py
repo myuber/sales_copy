@@ -126,5 +126,5 @@ STATICFILES_DIRS = (
 
 # ログイン先、ログアウト先のURLを設定
 LOGIN_URL = '/login'
-LOGIN_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = '/csa'
 LOGOUT_REDIRECT_URL = '/login'

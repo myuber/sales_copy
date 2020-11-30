@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("top", include("copystockApp.urls")), # includeでアプリ側のurlと連携させる
-    path("", include("accounts.urls")),
+    path("csa/", include("copystockApp.urls")), # includeでアプリ側のurlと連携させる
+    path("accounts/", include("accounts.urls")),
+    path("", RedirectView.as_view(url="/accounts/login/")),
 ]

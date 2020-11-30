@@ -8,7 +8,7 @@
 <body>
     <h3>{{ article.title }}</h3>
     <small>投稿日時 : {{ article.posted_at }}</small>
-    <p><a href="{% url 'edit' article.pk %}">編集</a></p>
+    <p><a href="{% url 'copystockApp:edit' article.pk %}">編集</a></p>
 
     <form action="" method="POST">
         <p><label for="copy">キャッチコピー</label></p>
@@ -22,6 +22,6 @@
         <p>まだキャッチコピーの投稿はありません</p>
     {% endfor %}
 
-    <a href="{% url 'index' %}">Top</a>
+    <a href="{% url 'copystockApp:index' %}">Top</a>
 </body>
 </html>
