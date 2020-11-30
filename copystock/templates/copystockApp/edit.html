@@ -13,8 +13,8 @@
         <p><input type="text" value="{{ article.title }}", name="title" id="title_input"></p>
         <p><button type="submit">登録</button></p>
 
-        <a href="{% url 'index' %}">Top</a>
-        <a href="{% url 'view_article' article.pk %}">編集しない</a>
+        <a href="{% url 'copystockApp:index' %}">Top</a>
+        <a href="{% url 'copystockApp:view_article' article.pk %}">編集しない</a>
     </form>
 </body>
 </html>

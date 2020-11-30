@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import Http404
+
 from . import models
+
 
 # トップページ（部屋の一覧）
 def index(request):
@@ -14,7 +16,7 @@ def new(request):
     template_name = "copystockApp/new.html"
     if request.method == "POST":
         article = models.Article.objects.create(title=request.POST["title"])
-        return redirect(view_article, article.pk)
+        return redirect("copystockApp:view_article", article.pk)
     
     return render(request, template_name)
 
@@ -34,6 +36,7 @@ def view_article(request, pk):
     context = {"article": article}
     return render(request, template_name, context)
 
+
 # 部屋の編集ページ
 def edit(request, pk):
     template_name = "copystockApp/edit.html"
@@ -45,10 +48,11 @@ def edit(request, pk):
     if request.method == "POST":
         article.title = request.POST["title"]
         article.save()
-        return redirect(view_article, pk)
+        return redirect("copystockApp:view_article", pk)
     
     context = {"article": article}
     return render(request, template_name, context)
+
 
 # 部屋の削除
 def delete(request, pk):
@@ -58,4 +62,4 @@ def delete(request, pk):
         raise Http404
 
     article.delete()
-    return redirect(index)
+    return redirect("copystockApp:index")
